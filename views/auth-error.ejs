@@ -1,0 +1,4 @@
+<% if(locals.auth_error && locals.auth_error.length > 0) {%> <%
+locals.auth_error.forEach((error) => { %>
+<div class="alert authentication-error error" role="alert"><%= error %></div>
+<% }); %> <%}%>

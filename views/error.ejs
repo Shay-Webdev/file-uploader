@@ -1,0 +1,6 @@
+<div class="error-container">
+  <% if (locals.error) { %> <% error.forEach((error) =>{ %>
+  <div class="error validation-error"><%= error.msg %></div>
+
+  <%});%> <%}%>
+</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('header') %>
+    <main class="main users-main">
+      <div class="users-container">
+        <% if (locals.users) { %> <% locals.users.forEach((user) => { %>
+        <div class="user">
+          <h2>User ID:</h2>
+          <p><%= user.id %></p>
+          <h2>User:</h2>
+          <p><%= user.name %></p>
+          <h2>Email:</h2>
+          <p><%= user.email %></p>
+        </div>
+        <% }); } %>
+      </div>
+      <a href="/delete-users"><button>Delete Users</button></a>
+    </main>
+    <%- include('footer') %>
+  </body>
+</html>
