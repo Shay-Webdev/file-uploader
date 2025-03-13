@@ -36,5 +36,5 @@ indexRouter
   .route('/upload')
   .get(uploadController.getUpload)
   .post(upload.single('file'), uploadController.postUpload);
-
+indexRouter.get('/delete-user/:id', indexController.getDeleteUser);
 module.exports = { indexRouter };

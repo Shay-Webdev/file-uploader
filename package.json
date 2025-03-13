@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migrate": "npx prisma migrate dev",
+    "seed": "prisma db seed",
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "generate": "npx prisma generate"
   },
   "repository": {
     "type": "git",

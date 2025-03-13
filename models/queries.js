@@ -31,6 +31,7 @@ async function createUser(user) {
       name: user.name,
       email: user.email,
       password: user.password,
+      rootFolderPath: user.rootFolderPath,
     },
   });
   return createdUser;
@@ -39,10 +40,19 @@ async function createUser(user) {
 async function deleteAllUsers() {
   await prisma.user.deleteMany();
 }
+
+async function deleteUserById(id) {
+  await prisma.user.delete({
+    where: {
+      id: id,
+    },
+  });
+}
 module.exports = {
   getAllUsers,
   getUserByEmail,
   deleteAllUsers,
+  deleteUserById,
   createUser,
   getUserById,
 };

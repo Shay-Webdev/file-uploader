@@ -5,8 +5,9 @@ const { validationResult } = require('express-validator');
 const db = require('../models/queries');
 const bcrypt = require('bcryptjs');
 const passport = require('../validation&Authentication/authentication');
-const flash = require('connect-flash');
-
+const fs = require('fs').promises;
+const path = require('path');
+const folderController = require('../controllers/folderController');
 async function getIndexpage(req, res) {
   //   console.log('user logged: ', req.user);
 
@@ -40,10 +41,13 @@ const postSignUp = [
     }
     const { username, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
+    const folderPath = await folderController.createFolder(email.split('@')[0]);
+
     const user = {
       name: username,
       email: email,
       password: hashedPassword,
+      rootFolderPath: folderPath,
     };
     const createdUser = await db.createUser(user);
     res.redirect('/login');
@@ -105,7 +109,16 @@ async function getAllUsers(req, res) {
 }
 async function deleteAllUsers(req, res) {
   await db.deleteAllUsers();
+  folderController.deleteAllFolders();
   res.redirect('/signup');
+}
+
+async function getDeleteUser(req, res) {
+  const id = Number(req.params.id);
+  const { name } = await db.getUserById(id);
+  await db.deleteUserById(id);
+  folderController.deleteFolderByName(name);
+  res.redirect('/users');
 }
 
 module.exports = {
@@ -117,4 +130,5 @@ module.exports = {
   getLogout,
   getAllUsers,
   deleteAllUsers,
+  getDeleteUser,
 };
