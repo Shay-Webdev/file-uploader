@@ -52,3 +52,7 @@ sid String @unique
 data String @db.VarChar(255)
 expiresAt DateTime
 }
+
+# instal multer for file upload
+
+npm i --save multer

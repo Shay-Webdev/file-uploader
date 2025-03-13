@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const indexRouter = Router();
 const indexController = require('../controllers/indexController');
+const uploadController = require('../controllers/uploadController');
 
 indexRouter.get('/', indexController.getIndexpage);
 indexRouter
@@ -17,5 +18,7 @@ indexRouter
   .post(indexController.getAllUsers);
 indexRouter.get('/logout', indexController.getLogout);
 indexRouter.get('/delete-users', indexController.deleteAllUsers);
+
+indexRouter.route('/upload').get(uploadController.getUpload);
 
 module.exports = { indexRouter };
