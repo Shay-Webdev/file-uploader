@@ -1,4 +1,6 @@
 const db = require('../models/queries');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 async function getUpload(req, res) {
   res.render('upload', {
@@ -8,4 +10,9 @@ async function getUpload(req, res) {
   });
 }
 
-module.exports = { getUpload };
+async function postUpload(req, res) {
+  console.log('uploaded file: ', req.file);
+  res.redirect('/');
+}
+
+module.exports = { getUpload, postUpload };

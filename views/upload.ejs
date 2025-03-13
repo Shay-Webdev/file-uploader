@@ -11,12 +11,18 @@
     <main class="main upload-main">
       <h1><%= welcomeMessage %></h1>
       <h2><%= description %></h2>
+      <% if(locals.currentUser) { %>
       <div class="upload-container">
         <form action="/upload" method="POST" enctype="multipart/form-data">
           <input type="file" name="file" id="file" multiple />
           <button type="submit">Upload</button>
         </form>
       </div>
+      <% } else { %>
+      <p>sign up or login to get started</p>
+      <a href="/signup">Sign Up</a>
+      <a href="/login">Login</a>
+      <% } %>
     </main>
     <%- include('footer') %>
   </body>
