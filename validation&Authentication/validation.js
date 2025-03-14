@@ -50,4 +50,26 @@ const validateLogin = [
     .escape(),
 ];
 
-module.exports = { validateSignup, validateLogin };
+const createFolderValidation = [
+  body('folder_name')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Folder name is required')
+    .isLength({ min: 4 })
+    .withMessage('Folder name must be at least 4 characters long')
+    .escape()
+    .custom(async (req, res) => {
+      console.log('req.user in folder validation: ', req);
+      console.log('res.locals in folder validation: ', res.req.user);
+
+      const folders = await db.getFoldersByUserId(res.req.user.id);
+      const folderNames = folders.map((folder) => folder.name);
+      console.log('folder names in folder validation: ', folderNames);
+
+      if (folderNames.includes(req)) {
+        throw new Error('Folder with this name already exists');
+      }
+    }),
+];
+
+module.exports = { validateSignup, validateLogin, createFolderValidation };

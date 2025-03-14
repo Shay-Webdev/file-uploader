@@ -48,6 +48,48 @@ async function deleteUserById(id) {
     },
   });
 }
+
+async function createFolderInDb(folder) {
+  const createdFolder = await prisma.folder.create({
+    data: {
+      name: folder.name,
+      path: folder.path,
+      userId: folder.userId,
+    },
+  });
+  return createdFolder;
+}
+
+async function createFileInDb(file) {
+  const createdFile = await prisma.file.create({
+    data: {
+      name: file.name,
+      path: file.path,
+      folderId: file.folderId,
+    },
+  });
+  return createdFile;
+}
+
+async function deleteFolderInDbById(id) {
+  await prisma.folder.delete({
+    where: {
+      id: id,
+    },
+  });
+}
+
+async function deleteAllFoldersInDb() {
+  await prisma.folder.deleteMany();
+}
+async function getFoldersByUserId(id) {
+  const folders = await prisma.folder.findMany({
+    where: {
+      userId: id,
+    },
+  });
+  return folders;
+}
 module.exports = {
   getAllUsers,
   getUserByEmail,
@@ -55,4 +97,9 @@ module.exports = {
   deleteUserById,
   createUser,
   getUserById,
+  createFolderInDb,
+  createFileInDb,
+  getFoldersByUserId,
+  deleteFolderInDbById,
+  deleteAllFoldersInDb,
 };

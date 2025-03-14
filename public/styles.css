@@ -300,3 +300,223 @@ li {
 .upload-container form button:hover {
   background-color: #0066cc;
 }
+/* error page */
+.error-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-height: 80vh;
+}
+.error-page-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.error-page-container p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.error-page-container a {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0077cc;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+.error-page-container a:hover {
+  color: #0066cc;
+}
+/* folders */
+
+.folders-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 80vh;
+}
+
+.folders-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.folders-container p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.folders-container a {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0077cc;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+.folders-container a:hover {
+  color: #0066cc;
+}
+.folders-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.folders-container form input[type='text'] {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+}
+
+.folders-container form button {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #0077cc;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.folders-container form button:hover {
+  background-color: #0066cc;
+}
+.folders-container form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.folders-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.folders-container li {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.folders-container li:hover {
+  background-color: #f5f5f5;
+}
+
+.folders-container li a {
+  text-decoration: none;
+  color: #0077cc;
+  transition: color 0.2s ease-in-out;
+}
+.folders-container li a:hover {
+  color: #0066cc;
+}
+
+.folders-container li button {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #0077cc;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.folders-container li button:hover {
+  background-color: #0066cc;
+}
+.folders-container li button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.folders-container li button.delete {
+  background-color: #dc3545;
+}
+.folders-container li button.delete:hover {
+  background-color: #c82333;
+}
+.folders-container li button.delete:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.folders-container li button.rename {
+  background-color: #0077cc;
+}
+.folders-container li button.rename:hover {
+  background-color: #0066cc;
+}
+.folders-container li button.rename:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.folders-container li button.create {
+  background-color: #0077cc;
+}
+.folders-container li button.create:hover {
+  background-color: #0066cc;
+}
+.folders-container li button.create:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.folders-container li button.logout {
+  background-color: #0077cc;
+}
+.folders-container li button.logout:hover {
+  background-color: #0066cc;
+}
+.folders-container li button.logout:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.folders-container li button.files {
+  background-color: #0077cc;
+}
+.folders-container li button.files:hover {
+  background-color: #0066cc;
+}
+.folders-container li button.files:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.folders-container li button.create-folder {
+  background-color: #0077cc;
+}
+.folders-container li button.create-folder:hover {
+  background-color: #0066cc;
+}
+.folders-container li button.create-folder:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

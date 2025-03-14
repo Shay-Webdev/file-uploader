@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const indexRouter = Router();
+const folderRouter = require('./folderRoute');
 const indexController = require('../controllers/indexController');
 const uploadController = require('../controllers/uploadController');
 const multer = require('multer');
@@ -37,4 +38,6 @@ indexRouter
   .get(uploadController.getUpload)
   .post(upload.single('file'), uploadController.postUpload);
 indexRouter.get('/delete-user/:id', indexController.getDeleteUser);
+
+indexRouter.use('/folders', folderRouter); // folder route is mounted
 module.exports = { indexRouter };

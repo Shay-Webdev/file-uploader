@@ -41,7 +41,9 @@ const postSignUp = [
     }
     const { username, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const folderPath = await folderController.createFolder(email.split('@')[0]);
+    const folderPath = await folderController.createUserRootFolder(
+      email.split('@')[0]
+    );
 
     const user = {
       name: username,
