@@ -91,4 +91,9 @@ const uploadValidation = [
     .escape(),
 ];
 
-module.exports = { validateSignup, validateLogin, createFolderValidation };
+module.exports = {
+  validateSignup,
+  validateLogin,
+  createFolderValidation,
+  uploadValidation,
+};

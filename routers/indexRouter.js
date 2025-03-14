@@ -33,10 +33,8 @@ indexRouter
 indexRouter.get('/logout', indexController.getLogout);
 indexRouter.get('/delete-users', indexController.deleteAllUsers);
 
-indexRouter
-  .route('/upload')
-  .get(uploadController.getUpload)
-  .post(upload.single('file'), uploadController.postUpload);
+indexRouter.get('/upload', uploadController.getUpload);
+indexRouter.post('/upload/:folderId', uploadController.postUpload);
 indexRouter.get('/delete-user/:id', indexController.getDeleteUser);
 
 indexRouter.use('/folders', folderRouter); // folder route is mounted
