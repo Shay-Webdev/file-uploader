@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('header') %>
+    <main class="main files-main">
+      <% if (!locals.currentUser) { %>
+      <h1>Please <a href="/login">log in</a> to view your files</h1>
+      <p>Don't have an account? <a href="/signup">Sign up</a></p>
+      <% } %> <% if (locals.user) { %>
+      <h1>Welcome to your files, <%= locals.user.name %>!</h1>
+      <% if (locals.error && locals.error.length > 0) { %>
+      <ul class="error-messages">
+        <% locals.error.forEach(err => { %>
+        <li><%= err.msg %></li>
+        <% }); %>
+      </ul>
+      <% } %> <% if (locals.files && Array.isArray(locals.files) &&
+      locals.files.length > 0) { %>
+      <div class="file-list">
+        <% locals.files.forEach(file => { %>
+        <div class="file">
+          <h2><%= file.name %></h2>
+          <p class="file-path"><%= file.path %></p>
+          <p class="file-size"><%= file.size %></p>
+        </div>
+        <% }); %>
+      </div>
+      <% } else { %>
+      <p>No files found.</p>
+      <% } %> <% } %>
+    </main>
+    <%- include('footer') %>
+  </body>
+</html>

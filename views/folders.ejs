@@ -23,8 +23,20 @@
         <% } %> <% if (locals.path === 'create') { %> <%-
         include('create-folder') %> <% } else if (locals.path === 'delete') { %>
         <%- include('delete-folder') %> <% } else if (locals.path === 'rename')
-        { %> <%- include('rename-folder') %> <% } else { %> <% if
-        (locals.folders && Array.isArray(locals.folders) &&
+        { %> <%- include('rename-folder') %> <% } else if (locals.path ===
+        'files') { %>
+        <h2>Files in <%= locals.folder.name %></h2>
+        <% if (locals.files && locals.files.length > 0) { %>
+        <ul class="file-list">
+          <% locals.files.forEach(file => { %>
+          <li><%= file %></li>
+          <% }); %>
+        </ul>
+        <% } else { %>
+        <p>No files found in this folder.</p>
+        <% } %>
+        <a href="/folders"><button>Back to Folders</button></a>
+        <% } else { %> <% if (locals.folders && Array.isArray(locals.folders) &&
         locals.folders.length > 0) { %>
         <div class="folder-list">
           <% locals.folders.forEach(folder => { %>
@@ -37,6 +49,9 @@
               </a>
               <a href="/folders/delete/<%= folder.id %>">
                 <button>Delete</button>
+              </a>
+              <a href="/folders/files/<%= folder.id %>">
+                <button>Open files</button>
               </a>
             </div>
           </div>

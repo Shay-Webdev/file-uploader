@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const folderController = require('../controllers/folderController');
+const filesRouter = require('./filesRouter');
 
 const folderRouter = Router();
 
@@ -19,5 +20,7 @@ folderRouter
 // Optional API routes
 folderRouter.delete('/all', folderController.deleteAllFolders);
 folderRouter.delete('/name/:name', folderController.deleteFolderByName);
+
+folderRouter.use('/files/', filesRouter);
 
 module.exports = folderRouter;

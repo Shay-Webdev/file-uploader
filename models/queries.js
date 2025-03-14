@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+// users queries
 async function getAllUsers() {
   const allUsers = await prisma.user.findMany();
   return allUsers;
@@ -49,6 +50,7 @@ async function deleteUserById(id) {
   });
 }
 
+// folders queries
 async function createFolderInDb(folder) {
   const createdFolder = await prisma.folder.create({
     data: {
@@ -58,17 +60,6 @@ async function createFolderInDb(folder) {
     },
   });
   return createdFolder;
-}
-
-async function createFileInDb(file) {
-  const createdFile = await prisma.file.create({
-    data: {
-      name: file.name,
-      path: file.path,
-      folderId: file.folderId,
-    },
-  });
-  return createdFile;
 }
 
 async function deleteFolderInDbById(id) {
@@ -99,6 +90,28 @@ async function getFolderByIdInDb(id) {
   });
   return folder;
 }
+
+// Files queries
+
+async function getAllFilesByFolderId(id) {
+  const files = await prisma.file.findMany({
+    where: {
+      folderId: id,
+    },
+  });
+  return files;
+}
+async function createFileInDb(file) {
+  const createdFile = await prisma.file.create({
+    data: {
+      name: file.name,
+      path: file.path,
+      folderId: file.folderId,
+      size: file.size,
+    },
+  });
+  return createdFile;
+}
 module.exports = {
   getAllUsers,
   getUserByEmail,
@@ -112,4 +125,5 @@ module.exports = {
   deleteFolderInDbById,
   deleteAllFoldersInDb,
   getFolderByIdInDb,
+  getAllFilesByFolderId,
 };

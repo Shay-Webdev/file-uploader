@@ -1,7 +1,5 @@
-<div class="create-folder-container">
-  <%- include('error') %>
-  <form action="/folders/create" method="POST">
-    <input type="text" name="folder_name" placeholder="Enter folder name" />
-    <button type="submit">Create Folder</button>
-  </form>
-</div>
+<form action="/folders/create" method="POST">
+  <label for="folder_name">Folder Name:</label>
+  <input type="text" id="folder_name" name="folder_name" required />
+  <button type="submit">Create</button>
+</form>
