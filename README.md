@@ -56,3 +56,7 @@ expiresAt DateTime
 # instal multer for file upload
 
 npm i --save multer
+
+# cloudinary for file upload
+
+npm i cloudinary

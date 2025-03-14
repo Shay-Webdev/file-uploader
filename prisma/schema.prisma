@@ -37,11 +37,11 @@ model File {
   id        Int      @id @default(autoincrement())
   name      String
   path      String
-  size      Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  folder    Folder   @relation(fields: [folderId], references: [id])
   folderId  Int
+  size      Int
+  mimeType  String? // e.g., "image/jpeg", "application/pdf"
+  folder    Folder   @relation(fields: [folderId], references: [id])
+  createdAt DateTime @default(now())
 }
 
 model Session {

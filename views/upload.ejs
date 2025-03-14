@@ -20,7 +20,12 @@
       <% } %>
       <form id="uploadForm" enctype="multipart/form-data" method="POST">
         <label for="folder">Select Folder:</label>
-        <select id="folder" name="folder" onchange="updateFormAction()">
+        <select
+          id="folder"
+          name="folder"
+          onchange="updateFormAction()"
+          required
+        >
           <option value="">-- Select a folder --</option>
           <% locals.folders.forEach(folder => { %>
           <option value="<%= folder.id %>"><%= folder.name %></option>

@@ -101,16 +101,16 @@ async function getAllFilesByFolderId(id) {
   });
   return files;
 }
-async function createFileInDb(file) {
-  const createdFile = await prisma.file.create({
+async function createFileInDb(fileData) {
+  return await prisma.file.create({
     data: {
-      name: file.name,
-      path: file.path,
-      folderId: file.folderId,
-      size: file.size,
+      name: fileData.name,
+      path: fileData.path,
+      folderId: fileData.folderId,
+      size: fileData.size,
+      mimeType: fileData.mimeType,
     },
   });
-  return createdFile;
 }
 module.exports = {
   getAllUsers,

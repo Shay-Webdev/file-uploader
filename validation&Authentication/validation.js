@@ -73,24 +73,17 @@ const createFolderValidation = [
 ];
 
 const uploadValidation = [
-  body('file')
-    .custom((value, { req }) => {
-      if (!req.file) {
-        throw new Error('No file uploaded');
-      }
-      return true;
-    })
-    .escape(),
-  body('folder')
-    .custom((value, { req }) => {
-      if (!req.body.folder) {
-        throw new Error('No folder selected');
-      }
-      return true;
-    })
-    .escape(),
+  body('folder').custom(async (value, { req }) => {
+    if (!req.params.folderId) {
+      throw new Error('No folder selected');
+    }
+    const folder = await db.getFolderByIdInDb(Number(req.params.folderId));
+    if (!folder || folder.userId !== req.user.id) {
+      throw new Error('Invalid or unauthorized folder');
+    }
+    return true;
+  }),
 ];
-
 module.exports = {
   validateSignup,
   validateLogin,
