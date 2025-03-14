@@ -268,7 +268,7 @@ li {
 .upload-container form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   padding: 1rem;
   background-color: #f5f5f5;

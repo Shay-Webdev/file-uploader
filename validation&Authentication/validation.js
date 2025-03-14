@@ -72,4 +72,23 @@ const createFolderValidation = [
     }),
 ];
 
+const uploadValidation = [
+  body('file')
+    .custom((value, { req }) => {
+      if (!req.file) {
+        throw new Error('No file uploaded');
+      }
+      return true;
+    })
+    .escape(),
+  body('folder')
+    .custom((value, { req }) => {
+      if (!req.body.folder) {
+        throw new Error('No folder selected');
+      }
+      return true;
+    })
+    .escape(),
+];
+
 module.exports = { validateSignup, validateLogin, createFolderValidation };
