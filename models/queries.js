@@ -90,6 +90,15 @@ async function getFoldersByUserId(id) {
   });
   return folders;
 }
+
+async function getFolderByIdInDb(id) {
+  const folder = await prisma.folder.findUnique({
+    where: {
+      id: id,
+    },
+  });
+  return folder;
+}
 module.exports = {
   getAllUsers,
   getUserByEmail,
@@ -102,4 +111,5 @@ module.exports = {
   getFoldersByUserId,
   deleteFolderInDbById,
   deleteAllFoldersInDb,
+  getFolderByIdInDb,
 };

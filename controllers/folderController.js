@@ -170,7 +170,7 @@ async function getDeleteFolderById(req, res) {
         .render('folders', { title: 'Folders', user: null });
     }
     const id = Number(req.params.id);
-    const folder = await db.getFoldersByUserId(id);
+    const folder = await db.getFolderByIdInDb(id);
 
     if (!folder || folder.userId !== req.user.id) {
       return res.status(404).render('folders', {

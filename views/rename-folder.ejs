@@ -1,0 +1,13 @@
+<h2>Rename Folder: <%= folder.name %></h2>
+<form action="/folders/rename/<%= folder.id %>" method="POST">
+  <label for="folder_name">New Name:</label>
+  <input
+    type="text"
+    id="folder_name"
+    name="folder_name"
+    value="<%= folder.name %>"
+    required
+  />
+  <button type="submit">Rename</button>
+  <a href="/folders"><button type="button">Cancel</button></a>
+</form>
