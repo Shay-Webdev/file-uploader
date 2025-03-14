@@ -7,6 +7,7 @@ const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('@prisma/client');
 const flash = require('connect-flash');
 require('dotenv').config();
+const fs = require('fs');
 
 const { indexRouter } = require('./routers/indexRouter');
 

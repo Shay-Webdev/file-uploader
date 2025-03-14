@@ -1,6 +1,8 @@
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const fs = require('fs');
+require('dotenv').config();
 
+const prisma = new PrismaClient();
 // users queries
 async function getAllUsers() {
   const allUsers = await prisma.user.findMany();

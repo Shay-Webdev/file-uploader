@@ -60,3 +60,9 @@ npm i --save multer
 # cloudinary for file upload
 
 npm i cloudinary
+
+# aiven ca.pem file should be base64 encoded
+
+cat ./prisma/ca.pem | base64 -w 0
+
+--paste the encoded text in database url in .env file(refer .env)
